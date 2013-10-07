@@ -1,36 +1,12 @@
 'use strict';
 
-// angular.module('sofaApp',['sofaApp.directives'])
 angular.module('sofaApp')
-  .controller('MainCtrl', function ($scope, Beat) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+  .controller('MainCtrl', function ($scope) {
+    $scope.representationTypes = [
+      'audio',
+      'bead',
+      'line',
+      'pie',
+      'bar'
     ];
-    $scope.measures = [];
-    $scope.measure0 = [];
-    $scope.measure0.push(new Beat()); 
-    $scope.measure0.push(new Beat()); 
-    $scope.measure0.push(new Beat()); 
-    $scope.measure0.push(new Beat()); 
-    $scope.measures.push($scope.measure0);
-    // $scope.measure0 = [];
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measures.push($scope.measure0);
-    // $scope.measure0 = [];
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measures.push($scope.measure0);
-    // $scope.measure0 = [];
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measure0.push(new Beat()); 
-    // $scope.measures.push($scope.measure0);
   });

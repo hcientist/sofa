@@ -1,6 +1,31 @@
-<div class="hero-unit">
-  <div ng-repeat="measure in measures">
-    <beat ng-repeat="b in measure" opacity="{{b.opacity}}" toggle="b.toggle()"/>
-    <beat ng-repeat="b in measure" opacity="{{b.opacity}}" toggle="b.toggle()"/>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <ul class="nav" role="navigation">
+        <li><a class="brand" href="/">Sound of Fractions</a></li>
+      </ul>
+      <ul class="nav pull-right login" role="navigation">
+          <li><p>If you want to Load or Save a Song, please login --&gt;</p></li>
+          <li><a class="btn btn-inverse btn-small" href="/users/sign_in">Login</a></li>
+          <li><a class="btn btn-inverse btn-small" href="/users/sign_up">Sign up</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="rails-alerts" class="row-fluid"></div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div id="top-row" class="row-fluid">
+      <div id="transport" class="play" style="position: relative;"><div class="btn span1 play"><i class="icon-play icon-2x"></i></div></div>
+    </div>
+    <div id="middle-row" class="row-fluid">
+      <ul>
+        <li ng-repeat="representationType in representationTypes" ng-click="alertit(representationType)">{{representationType}}</li>
+      </ul>
+    </div>
+    <div id="bottom-row" class="row-fluid">
+    </div>
   </div>
 </div>
