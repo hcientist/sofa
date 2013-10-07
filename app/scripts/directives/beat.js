@@ -38,7 +38,11 @@ function CircleRep(elem, scope) {
   });
 }
 
-angular.module('sofaApp.directives',[]).directive('beat', function() {
+function safeApply(scope, fn) {
+    (scope.$$phase || scope.$root.$$phase) ? fn() : scope.$apply(fn);
+}
+
+angular.module('sofaApp.directives.beat',[]).directive('beat', function() {
   return {
     restrict: 'E',
     replace: true,
@@ -54,10 +58,14 @@ angular.module('sofaApp.directives',[]).directive('beat', function() {
                   // which this directive is applied), the value passed into 
                   // this attribute should exist
       id: '@bid', 
-      toggleDir: '&toggle'
+      toggleDir: '&toggle',
+      representation: '@shape'
     },
     link: function(scope, elem, attr, ctrl) {
-      var rep = new reps[attr.shape](elem[0], scope);
+      var rep = [];
+      scope.$watch('representation', function (newVal, oldVal) {
+        rep = new reps[scope.representation](elem[0], scope);
+      });
     },
     templateUrl: 'views/templates/beat.html'
   };
