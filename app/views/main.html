@@ -27,9 +27,9 @@
       <div >
         <div class="track" ng-repeat="measure in measures">
           <!-- this represents one measure representation -->
-          <div class="measureRep"><beat ng-repeat="b in measure" bid="{{b.id}}" fill="b.fill" toggle="b.toggle()"/></div>
+          <div class="measureRep"><beat ng-repeat="b in measure" bid="{{b.id}}" shape="bar" fill="b.fill" toggle="b.toggle()"/></div>
           <!-- this represents another measure representation of the same beats -->
-          <div class="measureRep"><beat ng-repeat="b in measure" bid="{{b.id}}" fill="b.fill" toggle="b.toggle()"/></div>
+          <div class="measureRep"><beat ng-repeat="b in measure" bid="{{b.id}}" shape="circle" fill="b.fill" toggle="b.toggle()"/></div>
         </div>
       </div>
     </div>

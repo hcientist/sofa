@@ -1,3 +1,43 @@
+var reps = {
+  'circle': CircleRep,
+  'bar': BarRep
+};
+
+function BarRep(elem, scope) {
+  var container = d3.select(elem).append('svg')
+    .attr('width', 100)
+    .attr('height', 100);
+
+  var beat = container.insert('rect')
+    .attr('x',25)
+    .attr('y',25)
+    .attr('width', 50)
+    .attr('height', 50);
+  beat.attr('stroke', 'black')
+    .attr('fill', scope.fill);
+
+  scope.$watch('fill', function (newVal, oldVal) {
+      beat.attr('fill',newVal);
+  });
+}
+
+function CircleRep(elem, scope) {
+  var container = d3.select(elem).append('svg')
+    .attr('width', 100)
+    .attr('height', 100);
+
+  var beat = container.insert('circle')
+    .attr('cx',50)
+    .attr('cy',50)
+    .attr('r', 25);
+  beat.attr('stroke', 'black')
+    .attr('fill', scope.fill);
+
+  scope.$watch('fill', function (newVal, oldVal) {
+    beat.attr('fill',newVal);
+  });
+}
+
 angular.module('sofaApp.directives',[]).directive('beat', function() {
   return {
     restrict: 'E',
@@ -17,22 +57,7 @@ angular.module('sofaApp.directives',[]).directive('beat', function() {
       toggleDir: '&toggle'
     },
     link: function(scope, elem, attr, ctrl) {
-      var container = d3.select(elem[0]).append('svg')
-      .attr('width', 100)
-      .attr('height', 100);
-
-      var beat = container.insert('rect')
-        .attr('x',0)
-        .attr('y',0)
-        .attr('width', 50)
-        .attr('height', 50);
-      beat.attr('stroke', 'black')
-        .attr('fill', scope.fill);
-
-      scope.$watch('fill', function (newVal, oldVal) {
-          beat.attr('fill',newVal);
-      });
-
+      var rep = new reps[attr.shape](elem[0], scope);
     },
     templateUrl: 'views/templates/beat.html'
   };
