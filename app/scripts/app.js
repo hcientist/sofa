@@ -1,7 +1,7 @@
 'use strict';
 
 // angular.module('sofaApp', [])
-angular.module('sofaApp', ['sofaApp.models', 'sofaApp.directives'])
+angular.module('sofaApp', ['sofaApp.models', 'sofaApp.directives.beat', 'sofaApp.directives.measure'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

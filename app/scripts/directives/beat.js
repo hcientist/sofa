@@ -38,7 +38,7 @@ function CircleRep(elem, scope) {
   });
 }
 
-angular.module('sofaApp.directives',[]).directive('beat', function() {
+angular.module('sofaApp.directives.beat',[]).directive('beat', function() {
   return {
     restrict: 'E',
     replace: true,
@@ -54,10 +54,14 @@ angular.module('sofaApp.directives',[]).directive('beat', function() {
                   // which this directive is applied), the value passed into 
                   // this attribute should exist
       id: '@bid', 
-      toggleDir: '&toggle'
+      toggleDir: '&toggle',
+      shape: '@'
     },
     link: function(scope, elem, attr, ctrl) {
-      var rep = new reps[attr.shape](elem[0], scope);
+      // var rep = new reps[attr.shape](elem[0], scope);
+      console.log(attr);
+      console.log(attr.shape);
+      // var rep = new BarRep(elem[0], scope);
     },
     templateUrl: 'views/templates/beat.html'
   };
