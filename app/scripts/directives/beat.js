@@ -38,6 +38,10 @@ function CircleRep(elem, scope) {
   });
 }
 
+function safeApply(scope, fn) {
+    (scope.$$phase || scope.$root.$$phase) ? fn() : scope.$apply(fn);
+}
+
 angular.module('sofaApp.directives.beat',[]).directive('beat', function() {
   return {
     restrict: 'E',
@@ -55,13 +59,13 @@ angular.module('sofaApp.directives.beat',[]).directive('beat', function() {
                   // this attribute should exist
       id: '@bid', 
       toggleDir: '&toggle',
-      shape: '@'
+      representation: '@shape'
     },
     link: function(scope, elem, attr, ctrl) {
-      // var rep = new reps[attr.shape](elem[0], scope);
-      console.log(attr);
-      console.log(attr.shape);
-      // var rep = new BarRep(elem[0], scope);
+      var rep = [];
+      scope.$watch('representation', function (newVal, oldVal) {
+        rep = new reps[scope.representation](elem[0], scope);
+      });
     },
     templateUrl: 'views/templates/beat.html'
   };

@@ -25,9 +25,12 @@
         <li ng-repeat="representationType in representationTypes" ng-click="alertit(representationType)">{{representationType}}</li>
       </ul>
       <div >
-        <div class="track" ng-repeat="m in measures">
+        <div class="instrument" ng-repeat="i in instruments">
+          <div class="rep" ng-repeat="representation in i.reps">
+            <measure representation="{{representation}}" model="i"></measure>
+            
+          </div>
           <!-- this represents one measure representation -->
-          <measure representation="bar" model="m"/>
         </div>
       </div>
     </div>

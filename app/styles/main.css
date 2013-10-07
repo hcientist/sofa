@@ -486,6 +486,10 @@ svg.line {
     border-left: 3px solid black;
 }
 
-.track {
+.instrument {
     border: 2px dashed black;
+}
+
+.rep {
+  display: inline-block;
 }
