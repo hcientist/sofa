@@ -20,3 +20,16 @@ body {
     line-height: 1;
     letter-spacing: -1px;
 }
+
+.d3rect {
+    display: inline-block;
+}
+
+.measureRep {
+    display: inline-block;
+    border-left: 3px solid black;
+}
+
+.track {
+    border: 2px dashed black;
+}

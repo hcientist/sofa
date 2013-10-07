@@ -1,6 +1,9 @@
-<div class="hero-unit">
-  <div ng-repeat="measure in measures">
-    <beat ng-repeat="b in measure" opacity="{{b.opacity}}" toggle="b.toggle()"/>
-    <beat ng-repeat="b in measure" opacity="{{b.opacity}}" toggle="b.toggle()"/>
+<div >
+  <div class="track" ng-repeat="measure in measures">
+    <!-- this represents one measure representation -->
+    <div class="measureRep"><beat ng-repeat="b in measure" bid="{{b.id}}" fill="b.fill" toggle="b.toggle()"/></div>
+    <!-- this represents another measure representation of the same beats -->
+    <div class="measureRep"><beat ng-repeat="b in measure" bid="{{b.id}}" fill="b.fill" toggle="b.toggle()"/></div>
+    
   </div>
 </div>
