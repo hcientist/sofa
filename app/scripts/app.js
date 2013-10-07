@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sofaApp', [])
+angular.module('sofaApp', ['sofaApp.models', 'sofaApp.directives'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
