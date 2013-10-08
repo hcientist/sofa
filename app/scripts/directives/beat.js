@@ -72,10 +72,8 @@ angular.module('sofaApp.directives.beat',['sofaApp.utils']).directive('beat', fu
     },
     link: function(scope, elem, attr, ctrl) {
       var rep = [];
-      console.log(attr);
-      scope.$watch('beatHeight', function (newVal, oldVal) {
+      scope.$watch('representation', function (newVal, oldVal) {
         rep = new reps[scope.representation](elem[0], scope);
-        console.log(scope.beatHeight);
       });
     },
     templateUrl: 'views/templates/beat.html'
