@@ -1,18 +1,18 @@
 var reps = {
-  'circle': CircleRep,
-  'bar': BarRep
+  'circle': CircleBeatRepresentation,
+  'bar': BarBeatRepresentation
 };
 
-function BarRep(elem, scope) {
+function BarBeatRepresentation(elem, scope) {
   var container = d3.select(elem).append('svg')
     .attr('width', 100)
     .attr('height', 100);
 
   var beat = container.insert('rect')
-    .attr('x',25)
-    .attr('y',25)
-    .attr('width', 50)
-    .attr('height', 50);
+    .attr('x', 25)
+    .attr('y', 25)
+    .attr('width', scope.beatWidth)
+    .attr('height', scope.beatHeight);
   beat.attr('stroke', 'black')
     .attr('fill', scope.fill);
 
@@ -21,14 +21,14 @@ function BarRep(elem, scope) {
   });
 }
 
-function CircleRep(elem, scope) {
+function CircleBeatRepresentation(elem, scope) {
   var container = d3.select(elem).append('svg')
     .attr('width', 100)
     .attr('height', 100);
 
   var beat = container.insert('circle')
-    .attr('cx',50)
-    .attr('cy',50)
+    .attr('cx', 50)
+    .attr('cy', 50)
     .attr('r', 25);
   beat.attr('stroke', 'black')
     .attr('fill', scope.fill);
@@ -38,11 +38,7 @@ function CircleRep(elem, scope) {
   });
 }
 
-function safeApply(scope, fn) {
-    (scope.$$phase || scope.$root.$$phase) ? fn() : scope.$apply(fn);
-}
-
-angular.module('sofaApp.directives.beat',[]).directive('beat', function() {
+angular.module('sofaApp.directives.beat',['sofaApp.utils']).directive('beat', function(General) {
   return {
     restrict: 'E',
     replace: true,
@@ -59,15 +55,29 @@ angular.module('sofaApp.directives.beat',[]).directive('beat', function() {
                   // this attribute should exist
       id: '@bid', 
       toggleDir: '&toggle',
-      representation: '@shape'
+      representation: '@shape',
+      //Bar Measure
+      // lbbMeasureLocationX: '=',
+      // lbbMeasureLocationY: '=',
+      // lbbMeasureWidth: '=',
+      // lbbMeasureHeight: '=',
+      //Bar Beat
+      // linearBeatXPadding: '=',
+      // linearBeatYPadding: '=',
+      beatWidth: '@',
+      beatHeight: '@'
+      // beatBBY: '=',
+      // beatFactoryBarWidth: '=',
+      // beatFactoryBarHeight: '='
     },
     link: function(scope, elem, attr, ctrl) {
       var rep = [];
-      scope.$watch('representation', function (newVal, oldVal) {
+      console.log(attr);
+      scope.$watch('beatHeight', function (newVal, oldVal) {
         rep = new reps[scope.representation](elem[0], scope);
+        console.log(scope.beatHeight);
       });
     },
     templateUrl: 'views/templates/beat.html'
   };
 });
-

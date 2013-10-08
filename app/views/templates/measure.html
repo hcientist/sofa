@@ -1,3 +1,10 @@
 <div class="measureRep">
-  <beat ng-repeat="b in measure.beats" bid="{{b.id}}" shape="{{repr}}" fill="b.fill" toggle="b.toggle()"></beat>
+  <beat ng-repeat="b in measure.beats"
+        bid="{{b.id}}"
+        shape="{{repr}}"
+        fill="b.fill"
+        toggle="b.toggle()"
+        beatWidth="beatWidth"
+        beatHeight="{{beatHeight}}"
+  ></beat>
 </div>
