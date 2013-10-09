@@ -27,10 +27,10 @@
       <div >
         <div class="instrument" ng-repeat="i in instruments">
           <div class="rep" ng-repeat="representation in i.reps">
+            <!-- this represents one measure representation -->
             <measure representation="{{representation}}" model="i"></measure>
-            
           </div>
-          <!-- this represents one measure representation -->
+          <div class="add-representation pull-right"><i class="icon-plus" ng-click=""></i></div>
         </div>
       </div>
     </div>
